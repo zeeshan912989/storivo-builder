@@ -5,14 +5,14 @@ export const CustomCodeBlock = {
   fields: {
     ...sectionFields,
     html: { 
-      type: "custom",
+      type: "text",
       render: ({ value, onChange }) => {
         // We'll import this dynamically or assume it's available in the Puck config
         return null; // This will be handled in app/page.jsx
       }
     },
-    css: { type: "custom" },
-    js: { type: "custom" },
+    css: { type: "text" },
+    js: { type: "text" },
   },
   defaultProps: {
     ...defaultSectionProps,

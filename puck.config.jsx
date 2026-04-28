@@ -42,6 +42,9 @@ import { PremiumFooterBlock } from "./components/PremiumFooterBlock";
 import { PremiumHeaderBlock } from "./components/PremiumHeaderBlock";
 import { DynamicProductGridBlock } from "./components/DynamicProductGridBlock";
 import { SidebarProductGridBlock } from "./components/SidebarProductGridBlock";
+import { PremiumPricingBlock } from "./components/PremiumPricingBlock";
+import { BentoFeaturesBlock } from "./components/BentoFeaturesBlock";
+import { PremiumCTABannerBlock } from "./components/PremiumCTABannerBlock";
 
 import { ImageUploadField } from "./components/ImageUploadField";
 import { VideoUploadField } from "./components/VideoUploadField";
@@ -82,7 +85,7 @@ const transformFields = (fields) => {
 
     if (isImageField) {
       fields[fieldKey] = {
-        type: "custom",
+        type: "text",
         render: ({ value, onChange, field }) => (
           <ImageUploadField 
             value={value} 
@@ -102,7 +105,7 @@ const transformFields = (fields) => {
 
     if (isVideoField) {
       fields[fieldKey] = {
-        type: "custom",
+        type: "text",
         render: ({ value, onChange, field }) => (
           <VideoUploadField 
             value={value} 
@@ -116,7 +119,7 @@ const transformFields = (fields) => {
     // Target Custom CSS fields
     if (fieldKey === "customCss" && (field.type === "text" || field.type === "textarea")) {
       fields[fieldKey] = {
-        type: "custom",
+        type: "text",
         render: ({ value, onChange }) => (
           <div className="space-y-2">
             <label className="text-xs font-bold uppercase text-gray-500">Section Custom CSS</label>
@@ -160,7 +163,7 @@ export const config = {
   categories: {
     premium: { title: "⭐ PREMIUM", components: ["PremiumHeader"] },
     essential: { title: "Store Essential", components: ["AdvancedHeader", "PremiumFooter", "AnnouncementBar", "Header", "Footer", "ContactForm", "LoginForm", "SignupForm"] },
-    marketing: { title: "Marketing", components: ["FlashSaleTimer", "NewsletterPopup", "ConfettiCTA", "CountdownTimer", "SaleBanner", "Testimonials", "FAQ", "Newsletter"] },
+    marketing: { title: "Marketing", components: ["PremiumCTABanner", "BentoFeatures", "PremiumPricing", "FlashSaleTimer", "NewsletterPopup", "ConfettiCTA", "CountdownTimer", "SaleBanner", "Testimonials", "FAQ", "Newsletter"] },
     products: { title: "Products", components: ["SidebarProductGrid", "DynamicProductGrid", "PremiumShop", "FeaturedCollection", "NewArrivalsScroll", "CircularCategory", "ProductCard3D", "AutoScrollProducts", "CollectionList", "FeaturedProduct", "NewArrivals", "Products"] },
     trust: { title: "Trust", components: ["LiveVisitors", "RecentPurchasePopup", "AutoScrollLogoBanner", "TrustBadges", "ShippingInfoBar"] },
     typography: { title: "Typography", components: ["HeroSlider", "AboutSection", "VideoHero", "MorphingHero", "Hero", "Text"] },
@@ -184,6 +187,9 @@ export const config = {
     FAQ: FaqBlock,
     Newsletter: NewsletterBlock,
     NewsletterPopup: NewsletterPopupBlock,
+    PremiumPricing: PremiumPricingBlock,
+    BentoFeatures: BentoFeaturesBlock,
+    PremiumCTABanner: PremiumCTABannerBlock,
     AutoScrollProducts: AutoScrollProductsBlock,
     DynamicProductGrid: DynamicProductGridBlock,
     SidebarProductGrid: SidebarProductGridBlock,
