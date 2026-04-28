@@ -1,36 +1,45 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 🛒 Storivo Builder
 
-## Getting Started
+A professional, premium drag-and-drop page builder designed specifically for the **Storivo Storefront**. This builder allows you to create high-converting e-commerce pages with ease, featuring deep integration with dynamic product data and a high-end visual design system.
 
-First, run the development server:
+## 🚀 Core Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **💎 Premium Media Manager**: Integrated modal-based media manager for all image and video fields. Supports local file uploads (Base64) and external URLs.
+- **⚡ Dynamic Product Engine**: Advanced `DynamicProductGrid` and `SidebarProductGrid` that can fetch real-time data from REST APIs, Shopify Storefronts, or JSON endpoints.
+- **🎬 Cinematic Video Hero**: Support for local MP4/WebM uploads with auto-play and high-quality overlays.
+- **🔝 Ultra-Customizable Header**: Featuring the "Red Category" dropdown style, featured menus with icons/descriptions, and full mobile responsiveness.
+- **📱 Responsive by Design**: Every component is built with Tailwind CSS to ensure a pixel-perfect experience on desktop, tablet, and mobile.
+- **🔄 Live Storefront Sync**: A dedicated `/store` route that renders the builder's designs in real-time. Publish changes in the builder and see them live on your store instantly.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🛠️ Tech Stack
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+- **Framework**: [Next.js](https://nextjs.org/)
+- **Builder Engine**: [Puck](https://puck.measured.co/)
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
+- **Animations**: [Framer Motion](https://www.framer.com/motion/)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 📖 Getting Started
 
-## Learn More
+1. **Install Dependencies**:
+   ```bash
+   npm install
+   ```
 
-To learn more about Next.js, take a look at the following resources:
+2. **Run Development Server**:
+   ```bash
+   npm run dev
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+3. **Open the Builder**:
+   Visit [http://localhost:3000](http://localhost:3000) to start designing your store.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+4. **View Live Store**:
+   Visit [http://localhost:3000/store](http://localhost:3000/store) to see the production version of your design.
 
-## Deploy on Vercel
+## 🔗 Shopify Integration
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+To connect this builder to your real Shopify backend, refer to the [INTEGRATION_GUIDE.md](./INTEGRATION_GUIDE.md) included in this repository.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+*Designed and Built for the Storivo Ecosystem.*
