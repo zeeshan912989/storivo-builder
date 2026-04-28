@@ -45,6 +45,8 @@ import { SidebarProductGridBlock } from "./components/SidebarProductGridBlock";
 import { PremiumPricingBlock } from "./components/PremiumPricingBlock";
 import { BentoFeaturesBlock } from "./components/BentoFeaturesBlock";
 import { PremiumCTABannerBlock } from "./components/PremiumCTABannerBlock";
+import { StickyFeaturesBlock } from "./components/StickyFeaturesBlock";
+import { IconGridFeaturesBlock } from "./components/IconGridFeaturesBlock";
 
 import { ImageUploadField } from "./components/ImageUploadField";
 import { VideoUploadField } from "./components/VideoUploadField";
@@ -56,7 +58,6 @@ const transformFields = (fields) => {
   Object.keys(fields).forEach(fieldKey => {
     const field = fields[fieldKey];
 
-    // Recursive transform for array fields
     if (field.type === "array") {
       if (field.fields) transformFields(field.fields);
       if (field.arrayFields) transformFields(field.arrayFields);
@@ -70,7 +71,6 @@ const transformFields = (fields) => {
       fieldKey.toLowerCase().includes("count")
     );
 
-    // Target fields that look like images
     const isImageField = !isExcluded && (field.type === "text" || !field.type) && 
       (fieldKey.toLowerCase().includes("image") || 
        fieldKey.toLowerCase().includes("url") || 
@@ -96,7 +96,6 @@ const transformFields = (fields) => {
       };
     }
 
-    // Target fields that look like videos
     const isVideoField = (field.type === "text" || !field.type) && 
       (fieldKey.toLowerCase().includes("video") || 
        fieldKey.toLowerCase().includes("movie") || 
@@ -116,7 +115,6 @@ const transformFields = (fields) => {
       };
     }
 
-    // Target Custom CSS fields
     if (fieldKey === "customCss" && (field.type === "text" || field.type === "textarea")) {
       fields[fieldKey] = {
         type: "text",
@@ -132,6 +130,13 @@ const transformFields = (fields) => {
 };
 
 export const config = {
+  customFieldTypes: {
+    custom: {
+      render: ({ value, onChange, field, children }) => {
+        return children;
+      },
+    },
+  },
   root: {
     fields: {
       title: { type: "text", label: "SEO Title" },
@@ -163,7 +168,7 @@ export const config = {
   categories: {
     premium: { title: "⭐ PREMIUM", components: ["PremiumHeader"] },
     essential: { title: "Store Essential", components: ["AdvancedHeader", "PremiumFooter", "AnnouncementBar", "Header", "Footer", "ContactForm", "LoginForm", "SignupForm"] },
-    marketing: { title: "Marketing", components: ["PremiumCTABanner", "BentoFeatures", "PremiumPricing", "FlashSaleTimer", "NewsletterPopup", "ConfettiCTA", "CountdownTimer", "SaleBanner", "Testimonials", "FAQ", "Newsletter"] },
+    marketing: { title: "Marketing", components: ["IconGridFeatures", "StickyFeatures", "PremiumCTABanner", "BentoFeatures", "PremiumPricing", "FlashSaleTimer", "NewsletterPopup", "ConfettiCTA", "CountdownTimer", "SaleBanner", "Testimonials", "FAQ", "Newsletter"] },
     products: { title: "Products", components: ["SidebarProductGrid", "DynamicProductGrid", "PremiumShop", "FeaturedCollection", "NewArrivalsScroll", "CircularCategory", "ProductCard3D", "AutoScrollProducts", "CollectionList", "FeaturedProduct", "NewArrivals", "Products"] },
     trust: { title: "Trust", components: ["LiveVisitors", "RecentPurchasePopup", "AutoScrollLogoBanner", "TrustBadges", "ShippingInfoBar"] },
     typography: { title: "Typography", components: ["HeroSlider", "AboutSection", "VideoHero", "MorphingHero", "Hero", "Text"] },
@@ -190,6 +195,8 @@ export const config = {
     PremiumPricing: PremiumPricingBlock,
     BentoFeatures: BentoFeaturesBlock,
     PremiumCTABanner: PremiumCTABannerBlock,
+    StickyFeatures: StickyFeaturesBlock,
+    IconGridFeatures: IconGridFeaturesBlock,
     AutoScrollProducts: AutoScrollProductsBlock,
     DynamicProductGrid: DynamicProductGridBlock,
     SidebarProductGrid: SidebarProductGridBlock,

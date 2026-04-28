@@ -1,5 +1,5 @@
-import React from 'react';
 import { SectionWrapper } from './SectionWrapper';
+import { ImageUploadField } from './ImageUploadField';
 
 const BentoTile = ({ title, description, icon, size, image, primaryColor }) => {
   const sizeClasses = {
@@ -54,8 +54,20 @@ export const BentoFeaturesBlock = {
       fields: {
         title: { type: "text" },
         description: { type: "textarea" },
-        icon: { type: "text", label: "Icon Emoji" },
-        image: { type: "text", label: "Background Image URL" },
+        icon: { 
+          type: "text", 
+          label: "Icon (Emoji or Upload)",
+          render: ({ value, onChange, field }) => (
+            <ImageUploadField value={value} onChange={onChange} label={field.label} />
+          )
+        },
+        image: { 
+          type: "text", 
+          label: "Background Image",
+          render: ({ value, onChange, field }) => (
+            <ImageUploadField value={value} onChange={onChange} label={field.label} />
+          )
+        },
         size: {
           type: "select",
           options: [

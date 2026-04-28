@@ -1,18 +1,37 @@
 import React, { useEffect, useId } from 'react';
 import { SectionWrapper, sectionFields, defaultSectionProps } from './SectionWrapper';
+import { MonacoEditorField } from './MonacoEditorField';
 
 export const CustomCodeBlock = {
   fields: {
     ...sectionFields,
     html: { 
       type: "text",
-      render: ({ value, onChange }) => {
-        // We'll import this dynamically or assume it's available in the Puck config
-        return null; // This will be handled in app/page.jsx
-      }
+      render: ({ value, onChange }) => (
+        <div className="space-y-2">
+          <label className="text-[10px] font-black uppercase tracking-widest text-gray-400">HTML Content</label>
+          <MonacoEditorField value={value} onChange={onChange} language="html" height="200px" />
+        </div>
+      )
     },
-    css: { type: "text" },
-    js: { type: "text" },
+    css: { 
+      type: "text",
+      render: ({ value, onChange }) => (
+        <div className="space-y-2">
+          <label className="text-[10px] font-black uppercase tracking-widest text-gray-400">Section CSS</label>
+          <MonacoEditorField value={value} onChange={onChange} language="css" height="150px" />
+        </div>
+      )
+    },
+    js: { 
+      type: "text",
+      render: ({ value, onChange }) => (
+        <div className="space-y-2">
+          <label className="text-[10px] font-black uppercase tracking-widest text-gray-400">Section JS</label>
+          <MonacoEditorField value={value} onChange={onChange} language="javascript" height="150px" />
+        </div>
+      )
+    },
   },
   defaultProps: {
     ...defaultSectionProps,
